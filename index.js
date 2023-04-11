@@ -7,7 +7,8 @@ app.listen("3000", () => {
   const b = "Bến xe Yên Nghĩa";
   data.forEach((bus) => {
     const busStops = bus.busName.split(" - ");
-    const startStop = busStops[0].replace("Tuyến [01] ", "");
+    let startStop = busStops[0].replace(/\[.*?\]/g, "");
+    startStop = startStop.replace("Tuyến  ", "");
     const endStop = busStops[1];
 
     if (a === startStop && b === endStop) {
